@@ -1,10 +1,10 @@
 <template>
   <div>
-    <HeaderBar />
     <div class="container">
+      <HeaderBar />
       <router-view/>
+      <FooterBar />
     </div>
-    <FooterBar />
   </div>
 </template>
 
