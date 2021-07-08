@@ -1,13 +1,31 @@
 <template>
-  <Home />
+  <div>
+    <LoadLayout v-if="isLoading">
+      <BaseLoading/>
+    </LoadLayout>
+
+    <MainLayout v-else/>
+  </div>
 </template>
 
 <script>
-import Home from '@/views/Home/Index.vue'
+import { mapState } from 'vuex'
+
+import LoadLayout from './layouts/LoadLayout.vue'
+import MainLayout from './layouts/MainLayout.vue'
+import BaseLoading from '@/components/BaseLoading.vue'
 
 export default {
+  name: 'App',
   components: {
-    Home
+    LoadLayout,
+    MainLayout,
+    BaseLoading
+  },
+  computed: {
+    ...mapState('loading', {
+      isLoading: 'isLoading'
+    })
   }
 }
 </script>
