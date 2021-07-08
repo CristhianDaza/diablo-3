@@ -27,6 +27,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/test-utils": "^1.0.3",
+    "axios": "^0.18.0",
     "babel-eslint": "7.2.3",
     "bootstrap": "^4.3.1",
     "eslint": "^6.7.2",
@@ -43,6 +44,7 @@
     "sass-loader": "^8.0.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-axios": "~0.0.4",
     "vue-cli-plugin-bootstrap": "~0.4.0",
     "vue-template-compiler": "^2.6.11"
   },
