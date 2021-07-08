@@ -15,7 +15,7 @@ function getToken () {
     auth: { username: clientId, password: clientSecret }
   }
 
-  return post(API_URL.replace, body, config)
+  return post(`${API_URL}`, body, config)
 }
 
 export {
