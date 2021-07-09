@@ -5,8 +5,8 @@ Vue.use(VueRouter)
 
 const routerOptions = [
   { path: '/', name: 'Home' },
-  { path: '/region/:region/profile/:battleTag', name: 'Profile' },
-  { path: '/region/:region/profile/:battleTag/hero/:heroId', name: 'Hero' },
+  { path: '/:region/:battleTag', name: 'Profile' },
+  { path: '/:region/:battleTag/:heroId', name: 'Hero' },
   { path: '/error', name: 'Error' },
   { path: '*', redirect: { name: 'Home' } }
 ]
