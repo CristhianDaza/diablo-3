@@ -1,10 +1,20 @@
 <template>
   <div class="top-heroes">
-    <h1>Top Heroes</h1>
+    <h2 class="my-4 font-diablo">Top Heroes</h2>
+    <b-row>
+      <b-col
+        sm="4"
+        v-for="hero in heroes"
+        :key="hero.id"
+      >
+        <TopHero :hero="hero" />
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
+import TopHero from './TopHero.vue'
 
 export default {
   name: 'TopHeroes',
@@ -13,6 +23,9 @@ export default {
       required: true,
       type: Array
     }
+  },
+  components: {
+    TopHero
   }
 }
 </script>
