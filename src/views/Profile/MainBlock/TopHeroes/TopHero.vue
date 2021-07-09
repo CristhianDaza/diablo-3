@@ -1,6 +1,36 @@
 <template>
-  <div>
-    <h1>TopHero</h1>
+  <div class="hero-portrait-wrapper mb-5 mb-sm-0">
+    <div class="bg-secondary d-flex justify-content-center p-3 p-sm-0">
+      <div :class="heroClass"></div>
+    </div>
+    <div class="p-2 bg-dark">
+      <h5
+        class="text-truncate m-0 text-center title-name font-diablo"
+        :class="{'bg-danger': hero.harcore}"
+      >
+        {{ hero.name }}
+        <img
+          v-if="hero.seasonal"
+          src="@/assets/img/leaf.png"
+          alt="leaf"
+          width="12px"
+        >
+      </h5>
+      <div class="d-flex justify-content-between border-top border-seconday pt-2 align-items-center mt-2">
+        <small class="elite-kills">
+          <span class="text-monospace">
+            {{ hero.kills.elites }}
+          </span>
+          Elite kills
+        </small>
+        <small
+          class="level-circle"
+          :class="{'text-danger': hero.dead}"
+        >
+          {{ hero.level }}
+        </small>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,6 +42,28 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    heroClass () {
+      const gender = this.hero.gender === 0 ? 'male' : 'female'
+      return `hero-${this.hero.classSlug} ${gender}`
+    }
   }
 }
 </script>
+
+<style lang="stylus">
+  .hero-portrait-wrapper
+    .title-name
+      color white
+      font-weight 900
+    .level-circle
+      width 26px
+      height 26px
+      padding 4px
+      font-weight bold
+      text-align center
+      border-radius 13px
+      background-color #15202b
+      box-shadow 0 0 0 2px #6c757d
+</style>
