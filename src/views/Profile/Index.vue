@@ -1,10 +1,12 @@
 <template>
   <div>
+    <baseLoading v-if="isLoading"/>
     <h1>Profile View</h1>
   </div>
 </template>
 
 <script>
+import baseLoading from '@/components/BaseLoading.vue'
 import setError from '@/mixins/setError'
 import { getApiAccount } from '@/api/search'
 
@@ -15,11 +17,17 @@ export default {
   ],
   data () {
     return {
-      profileData: null
+      profileData: null,
+      isLoading: false
     }
   },
+  components: {
+    baseLoading
+  },
   created () {
-    this.fetchData()
+    this.isLoading = true
+    const { region, battleTag: account } = this.$route.params
+    this.fetchData(region, account)
   },
   methods: {
     fetchData () {
@@ -42,6 +50,9 @@ export default {
 
           this.setApiErr(errObj)
           this.$router.push({ name: 'Error' })
+        })
+        .finally(() => {
+          this.isLoading = false
         })
     }
   }
